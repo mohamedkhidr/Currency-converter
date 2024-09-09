@@ -6,7 +6,7 @@
     app:startDestination="@id/HomeFragment">
     <fragment
         android:id="@+id/HomeFragment"
-        android:name="com.khidrew.currency.screens.HomeFragment"
+        android:name="com.khidrew.currency.ui.screens.HomeFragment"
         android:label="@string/currency"
         tools:layout="@layout/fragment_home" >
         <action
@@ -27,13 +27,13 @@
     </fragment>
     <fragment
         android:id="@+id/HistoryFragment"
-        android:name="com.khidrew.currency.screens.HistoryFragment"
+        android:name="com.khidrew.currency.ui.screens.HistoryFragment"
         android:label="@string/history"
         tools:layout="@layout/fragment_history" />
 
     <fragment
         android:id="@+id/SettingsFragment"
-        android:name="com.khidrew.currency.screens.SettingsFragment"
+        android:name="com.khidrew.currency.ui.screens.SettingsFragment"
         android:label="@string/settings"
         />
 

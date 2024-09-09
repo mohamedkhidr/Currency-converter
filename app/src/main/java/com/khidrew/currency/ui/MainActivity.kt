@@ -1,9 +1,6 @@
-package com.khidrew.currency
+package com.khidrew.currency.ui
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -13,10 +10,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.khidrew.currency.R
 import com.khidrew.currency.databinding.ActivityMainBinding
 import com.khidrew.currency.viewModels.SharedViewModel
-import dagger.hilt.android.AndroidEntryPoint
-
 
 
 class MainActivity : AppCompatActivity() {

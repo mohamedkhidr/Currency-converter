@@ -1,4 +1,4 @@
-package com.khidrew.currency.screens
+package com.khidrew.currency.ui.screens
 
 import android.os.Bundle
 import androidx.preference.PreferenceFragmentCompat
