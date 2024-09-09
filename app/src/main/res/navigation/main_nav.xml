@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/HomeFragment">
+    <fragment
+        android:id="@+id/HomeFragment"
+        android:name="com.khidrew.currency.screens.HomeFragment"
+        android:label="@string/currency"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home_to_history"
+            app:destination="@id/HistoryFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left"/>
+        <action
+            android:id="@+id/action_home_to_settings"
+            app:destination="@id/SettingsFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left"/>
+
+    </fragment>
+    <fragment
+        android:id="@+id/HistoryFragment"
+        android:name="com.khidrew.currency.screens.HistoryFragment"
+        android:label="@string/history"
+        tools:layout="@layout/fragment_history" />
+
+    <fragment
+        android:id="@+id/SettingsFragment"
+        android:name="com.khidrew.currency.screens.SettingsFragment"
+        android:label="@string/settings"
+        />
+
+
+</navigation>
