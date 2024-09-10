@@ -3,6 +3,7 @@ import java.util.Properties
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.hilt.android)
     kotlin("kapt")
 }
 
@@ -52,6 +53,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+    buildFeatures{
+        buildConfig = true
     }
 }
 
@@ -105,12 +109,15 @@ dependencies {
     implementation(libs.hilt.android)
     kapt (libs.hilt.android.compiler)
 
-    implementation(libs.androidx.hilt.lifecycle.viewmodel)
-    kapt (libs.androidx.hilt.compiler)
 
     implementation(project(":data"))
     implementation(project(":domain"))
 
 
 
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
 }

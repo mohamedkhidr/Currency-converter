@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "conversions", indices = [Index(value = ["from", "to"], unique = true)])
 data class Conversion(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
+    val id: Int = 0,
     val from: String,
     val to: String,
     val fromAmount: Double,

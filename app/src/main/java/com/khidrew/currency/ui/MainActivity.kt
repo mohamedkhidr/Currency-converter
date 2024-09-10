@@ -13,8 +13,9 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.khidrew.currency.R
 import com.khidrew.currency.databinding.ActivityMainBinding
 import com.khidrew.currency.viewModels.SharedViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        viewModel.getLatestConversion()
         initUI()
     }
 

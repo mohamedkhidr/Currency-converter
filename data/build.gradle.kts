@@ -53,4 +53,9 @@ dependencies {
     // Retrofit
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
+
+    //Dagger - Hilt
+    implementation(libs.hilt.android)
+    kapt (libs.hilt.android.compiler)
+    implementation(project(":domain"))
 }
