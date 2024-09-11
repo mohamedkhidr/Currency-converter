@@ -21,11 +21,17 @@ class SyncLatestRatesRepoImpl @Inject constructor(
         return try {
             val response = apiService.getLatestRates(BuildConfig.API_KEY)
             if (response.isSuccessful) {
-                val data = response.body()
-                insertDataUpdates(data)
-                ApiStates.Success(data)
+                if(response.body()?.success == true) {
+                    val data = response.body()
+                    insertDataUpdates(data)
+                    ApiStates.Success(data)
+                }else{
+                    ApiStates.Failure(Throwable(response.body()?.error?.info))
+                }
             } else {
+
                 ApiStates.Failure(Throwable("${response.errorBody()} : ${response.code()}"))
+
             }
         } catch (e: IOException) {
             Log.e("API_ERROR", "Network Error: ${e.message}")

@@ -20,4 +20,13 @@
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="currencies">Currencies</string>
+    <string name="select_currency">Select a currency</string>
+    <string name="general">General</string>
+    <string name="night_mode">Night mode</string>
+    <string name="key_ui_mode">uiMode</string>
+    <string name="api_error">API error</string>
+    <string name="network_error">May be you are not connected to the network please check your connection</string>
+    <string name="back_online">Back online</string>
+    <string name="offline">Offline</string>
+    <string name="same_currency">Same currency</string>
 </resources>

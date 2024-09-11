@@ -3,6 +3,7 @@ package com.khidrew.currency.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.khidrew.currency.models.ConversionListItem
+import com.khidrew.data.utils.TimeUtils.formatDateToBeReadable
 import com.khidrew.domain.entities.ConversionModel
 import com.khidrew.domain.usecases.GetConversionsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -36,16 +37,14 @@ class HistoryViewModel @Inject constructor(private val getConversionsUseCase: Ge
 
         var lastDate: String? = null
 
-        conversions.sortedBy { it.timeStamp }.forEach { conversion ->
-            val currentDate = dateFormat.format(conversion.timeStamp)
+        conversions.forEach { conversion ->
+            val currentDate = formatDateToBeReadable(conversion.timeStamp, dateFormat)
 
             if (currentDate != lastDate) {
-                // Add a new date header when the date changes
                 groupedItems.add(ConversionListItem.DateHeader(currentDate))
                 lastDate = currentDate
             }
 
-            // Add the actual conversion item
             groupedItems.add(ConversionListItem.ConversionItem(conversion))
         }
 

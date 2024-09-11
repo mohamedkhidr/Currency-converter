@@ -2,11 +2,13 @@ package com.khidrew.currency.di
 
 import com.khidrew.data.dataSource.local.database.CurrencyDataBase
 import com.khidrew.data.dataSource.remote.ApiService
+import com.khidrew.data.repos.ConversionBySymbolsRepoImpl
 import com.khidrew.data.repos.ConversionInsertionRepoImpl
 import com.khidrew.data.repos.ConversionsRepoImpl
 import com.khidrew.data.repos.CurrenciesRepoImpl
 import com.khidrew.data.repos.LatestConversionRepoImpl
 import com.khidrew.data.repos.SyncLatestRatesRepoImpl
+import com.khidrew.domain.repos.ConversionBySymbolRepo
 import com.khidrew.domain.repos.ConversionInsertionRepo
 import com.khidrew.domain.repos.ConversionRepo
 import com.khidrew.domain.repos.CurrenciesRepo
@@ -44,6 +46,11 @@ object RepoModule {
     @Provides
     fun getCurrenciesRepo( dataBase: CurrencyDataBase): CurrenciesRepo {
         return CurrenciesRepoImpl(dataBase)
+    }
+
+    @Provides
+    fun getConversionBySymbolsRepo( dataBase: CurrencyDataBase): ConversionBySymbolRepo {
+        return ConversionBySymbolsRepoImpl(dataBase)
     }
 
 

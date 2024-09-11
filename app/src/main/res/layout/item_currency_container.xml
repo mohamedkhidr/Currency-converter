@@ -14,6 +14,9 @@
         <variable
             name="clickListener"
             type="android.view.View.OnClickListener" />
+        <variable
+            name="isFieldEnabled"
+            type="Boolean" />
     </data>
 
     <LinearLayout
@@ -21,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:background="@drawable/rounded_bg"
+        android:backgroundTint="@color/backgroundColor"
         android:elevation="@dimen/home_elevation"
         android:orientation="vertical"
         android:outlineSpotShadowColor="@color/shadowColor"
@@ -33,11 +37,14 @@
             android:id="@+id/tv_symbol"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="4dp"
-            android:text="@{currency.symbol}"
+            app:text="@{currency.symbol}"
             android:textColor="@android:color/holo_blue_dark"
-            android:textSize="28sp"
+            android:background="@drawable/rounded_bg"
+            android:padding="4dp"
+            android:backgroundTint="@color/itemOnContainerColor"
+            android:textSize="24sp"
             app:drawableEndCompat="@drawable/ic_arrow_down"
+            android:drawableTint="@color/title_text_color"
             app:listener="@{clickListener}"
             tools:text="EGP" />
 
@@ -49,7 +56,9 @@
             android:background="@drawable/rounded_outlined"
             android:inputType="numberDecimal"
             android:padding="4dp"
+            android:maxLength="10"
             android:text="@={amount}"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:enabled="@{isFieldEnabled}"/>
     </LinearLayout>
 </layout>

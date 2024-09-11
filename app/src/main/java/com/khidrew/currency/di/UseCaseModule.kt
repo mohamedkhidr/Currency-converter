@@ -1,11 +1,13 @@
 package com.khidrew.currency.di
 
 import com.khidrew.data.repos.SyncLatestRatesRepoImpl
+import com.khidrew.domain.repos.ConversionBySymbolRepo
 import com.khidrew.domain.repos.ConversionInsertionRepo
 import com.khidrew.domain.repos.ConversionRepo
 import com.khidrew.domain.repos.CurrenciesRepo
 import com.khidrew.domain.repos.LatestConversionRepo
 import com.khidrew.domain.repos.SyncLatestRatesRepo
+import com.khidrew.domain.usecases.GetConversionBySymbols
 import com.khidrew.domain.usecases.GetConversionsUseCase
 import com.khidrew.domain.usecases.GetCurrenciesUseCase
 import com.khidrew.domain.usecases.GetLatestConversionUseCase
@@ -43,5 +45,10 @@ object UseCaseModule {
     @Provides
     fun provideGetCurrenciesUseCase(currenciesRepo: CurrenciesRepo): GetCurrenciesUseCase{
         return GetCurrenciesUseCase(currenciesRepo)
+    }
+
+    @Provides
+    fun provideGetConversionBySymbolsUseCase(conversionBySymbolRepo: ConversionBySymbolRepo): GetConversionBySymbols{
+        return GetConversionBySymbols(conversionBySymbolRepo)
     }
 }

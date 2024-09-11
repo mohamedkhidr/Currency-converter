@@ -11,7 +11,7 @@ import com.khidrew.data.dataSource.local.database.databaseEntities.Currency
 
 @Database(
     entities = [Currency::class, Conversion::class],
-    version = 4
+    version = 6
 )
 abstract class CurrencyDataBase : RoomDatabase() {
 

@@ -9,12 +9,16 @@
             type="com.khidrew.currency.viewModels.HistoryViewModel" />
     </data>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundColor">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_conversions"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_conversion"
-        app:conversionsList="@{viewModel.conversions}"
         android:orientation="vertical"/>
+    </FrameLayout>
 </layout>

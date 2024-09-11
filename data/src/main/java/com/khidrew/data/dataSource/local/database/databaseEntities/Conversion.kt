@@ -12,13 +12,13 @@ import androidx.room.PrimaryKey
             entity = Currency::class,
             parentColumns = ["symbol"],
             childColumns = ["from"],
-            onDelete = ForeignKey.CASCADE
+            onDelete = ForeignKey.NO_ACTION
         ),
         ForeignKey(
             entity = Currency::class,
             parentColumns = ["symbol"],
             childColumns = ["to"],
-            onDelete = ForeignKey.CASCADE
+            onDelete = ForeignKey.NO_ACTION
         )
     ],
     indices = [Index(value = ["from", "to"], unique = true)])

@@ -12,6 +12,6 @@ interface ConversionsDao {
     fun insertOrUpdate(conversion: Conversion)
 
 
-    @Query("SELECT * FROM conversions WHERE timeStamp >= :fourDaysAgoTimestamp ORDER BY timeStamp DESC")
-    fun get4DaysConversions(fourDaysAgoTimestamp: Long):List<Conversion>
+    @Query("SELECT * FROM conversions WHERE timeStamp BETWEEN :fourDaysAgoTimestamp AND :timeNow ORDER BY timeStamp DESC")
+    fun get4DaysConversions(fourDaysAgoTimestamp: Long, timeNow:Long):List<Conversion>
 }

@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
-
         android:elevation="@dimen/cardview_default_radius"
         app:cardCornerRadius="10dp">
 

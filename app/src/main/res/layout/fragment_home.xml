@@ -28,7 +28,8 @@
             layout="@layout/item_currency_container"
             app:amount="@{viewModel.fromAmount}"
             app:currency="@{viewModel.fromCurrency}"
-            app:clickListener="@{fromClickListener}"/>
+            app:clickListener="@{fromClickListener}"
+            app:isFieldEnabled="@{true}"/>
         <com.google.android.material.button.MaterialButton
             android:layout_width="150dp"
             android:layout_height="wrap_content"

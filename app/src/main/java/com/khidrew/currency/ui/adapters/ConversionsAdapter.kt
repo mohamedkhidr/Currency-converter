@@ -9,7 +9,10 @@ import com.khidrew.currency.databinding.ItemConversionBinding
 import com.khidrew.currency.databinding.ItemDateHeaderBinding
 import com.khidrew.currency.models.ConversionListItem
 
-class ConversionsAdapter(private val items: List<ConversionListItem>) :
+class ConversionsAdapter(
+    private val items: List<ConversionListItem>,
+    private val onItemClick: (ConversionListItem.ConversionItem) -> Unit
+) :
     RecyclerView.Adapter<BaseViewHolder>() {
     companion object {
         private const val VIEW_TYPE_DATE_HEADER = 0
@@ -40,7 +43,7 @@ class ConversionsAdapter(private val items: List<ConversionListItem>) :
                     parent,
                     false
                 )
-                ConversionItemViewHolder(binding)
+                ConversionItemViewHolder(binding, onItemClick)
             }
 
             else -> throw IllegalArgumentException("Invalid view type")
@@ -65,15 +68,20 @@ class ConversionsAdapter(private val items: List<ConversionListItem>) :
 
     }
 
-    class ConversionItemViewHolder(private val binding: ItemConversionBinding) : BaseViewHolder(binding.root) {
+    class ConversionItemViewHolder(
+        private val binding: ItemConversionBinding,
+        private val onItemClick: (ConversionListItem.ConversionItem) -> Unit
+    ) : BaseViewHolder(binding.root) {
         override fun onBind(item: Any) {
             if(item is ConversionListItem.ConversionItem){
+                binding.root.setOnClickListener { onItemClick(item) }
                 binding.tvFromSymbol.text = item.conversion.from.symbol
                 binding.tvToSymbol.text = item.conversion.to.symbol
                 binding.tvFromAmount.text = "${item.conversion.fromAmount}"
                 binding.tvToAmount.text = "${item.conversion.toAmount}"
             }
         }
+
 
     }
 }

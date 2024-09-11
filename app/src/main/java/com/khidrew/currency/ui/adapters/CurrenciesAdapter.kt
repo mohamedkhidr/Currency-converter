@@ -40,10 +40,10 @@ class CurrenciesAdapter(
         notifyDataSetChanged()
     }
 
-    override fun getItemCount(): Int = items.size
+    override fun getItemCount(): Int = filteredItems.size
 
     override fun onBindViewHolder(holder: SymbolViewHolder, position: Int) {
-        holder.onBind(items[position], onItemClick)
+        holder.onBind(filteredItems[position], onItemClick)
     }
 
 

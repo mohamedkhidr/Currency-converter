@@ -9,4 +9,9 @@ interface ConversionWithCurrenciesDao {
     @Transaction
     @Query("SELECT * FROM conversions ORDER BY timeStamp DESC LIMIT 1")
     suspend fun getLatestConversionWithCurrencies(): ConversionWithCurrencies?
+
+
+    @Transaction
+    @Query("SELECT * FROM conversions WHERE `from`= :fromSymbol AND `to` = :toSymbol")
+    suspend fun getLatestConversionWithCurrenciesBySymbols(fromSymbol:String, toSymbol:String): ConversionWithCurrencies?
 }

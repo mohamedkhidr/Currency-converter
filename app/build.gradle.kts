@@ -115,6 +115,10 @@ dependencies {
     implementation(project(":domain"))
 
 
+    //Test
+    testImplementation("com.google.truth:truth:1.1.5")
+
+
 
 }
 
