@@ -33,7 +33,7 @@ This is a Currency Converter App that allows users to convert a wide range of cu
 
 ![Home ](https://github.com/mohamedkhidr/Currency-converter/blob/master/imgs/IMG-20240911-WA0002.jpg)
 ![History](https://github.com/mohamedkhidr/Currency-converter/blob/master/imgs/IMG-20240911-WA0003.jpg)
-![Settings](https://github.com/mohamedkhidr/Currency-converter/blob/master/imgs/IMG-20240911-WA0003.jpg)
+![Settings](https://github.com/mohamedkhidr/Currency-converter/blob/master/imgs/IMG-20240911-WA0004.jpg)
 
 ## Installation
 
