@@ -40,7 +40,7 @@ This is a Currency Converter App that allows users to convert a wide range of cu
 Clone the repository and build the project:
 
 ```bash
-git clone https://github.com/yourusername/yourrepository.git
+git clone (https://github.com/mohamedkhidr/Currency-converter)
 cd yourrepository
 ./gradlew build
 
