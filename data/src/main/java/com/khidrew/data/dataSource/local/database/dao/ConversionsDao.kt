@@ -11,8 +11,6 @@ interface ConversionsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertOrUpdate(conversion: Conversion)
 
-    @Query("SELECT * FROM conversions ORDER BY timeStamp DESC LIMIT 1")
-    fun getLatestConversion(): Conversion?
 
     @Query("SELECT * FROM conversions WHERE timeStamp >= :fourDaysAgoTimestamp ORDER BY timeStamp DESC")
     fun get4DaysConversions(fourDaysAgoTimestamp: Long):List<Conversion>

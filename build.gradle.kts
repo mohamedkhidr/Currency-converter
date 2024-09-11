@@ -4,4 +4,5 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android) apply false
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.hilt.android) version libs.versions.hiltAndroidCompiler.get() apply false
+    alias(libs.plugins.safe.args) apply false
 }

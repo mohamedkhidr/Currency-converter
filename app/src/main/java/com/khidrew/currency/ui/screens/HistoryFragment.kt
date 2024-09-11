@@ -17,7 +17,7 @@ class HistoryFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.getAllConversions()
+
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

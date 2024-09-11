@@ -16,7 +16,7 @@ object LocalDataModule {
     @Provides
     fun getDatabaseInstance(@ApplicationContext context: Context): CurrencyDataBase {
         return Room.databaseBuilder(context, CurrencyDataBase::class.java, "currency")
-            .fallbackToDestructiveMigrationFrom()
+            .fallbackToDestructiveMigration()
             .build()
 
     }

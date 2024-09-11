@@ -7,8 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "currencies", indices = [Index(value = ["symbol"], unique = true)])
 data class Currency(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
+    val id: Int = 0,
     val symbol: String,
-    val desc: String,
     val price: Double
 )

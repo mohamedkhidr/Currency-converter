@@ -3,8 +3,10 @@ package com.khidrew.currency.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.khidrew.domain.entities.ConversionModel
-import com.khidrew.domain.usecases.GetLatestConversion
-import com.khidrew.domain.usecases.InsertOrUpdateConversion
+import com.khidrew.domain.entities.CurrencyModel
+import com.khidrew.domain.usecases.GetLatestConversionUseCase
+import com.khidrew.domain.usecases.InsertOrUpdateConversionUseCase
+import com.khidrew.domain.usecases.SyncLatestRatesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,17 +21,23 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SharedViewModel @Inject constructor(
-    private val getLatestConversionUseCase: GetLatestConversion,
-    private val insertOrUpdateConversion: InsertOrUpdateConversion
+    private val getLatestConversionUseCase: GetLatestConversionUseCase,
+    private val insertOrUpdateConversionUseCase: InsertOrUpdateConversionUseCase,
+    private val syncLatestRatesUseCase: SyncLatestRatesUseCase,
 ) :
     ViewModel() {
-    val fromCurrency: MutableStateFlow<String> = MutableStateFlow("")
+    val fromCurrency: MutableStateFlow<CurrencyModel?> = MutableStateFlow(null)
 
-    val fromAmount: MutableStateFlow<String> = MutableStateFlow("")
+    val toCurrency: MutableStateFlow<CurrencyModel?> = MutableStateFlow(null)
 
-    val toCurrency: MutableStateFlow<String> = MutableStateFlow("")
-    val toAmount: MutableStateFlow<String> = MutableStateFlow("")
+    val fromAmount: MutableStateFlow<String> = MutableStateFlow("0.0")
+    val toAmount: MutableStateFlow<String> = MutableStateFlow("0.0")
 
+
+    init {
+        getLatestRates()
+        getLatestConversion()
+    }
 
     private fun observeAllFields() {
         viewModelScope.launch {
@@ -39,8 +47,11 @@ class SharedViewModel @Inject constructor(
                 fromAmount,
                 toAmount
             ) { fromCurrencyValue, toCurrencyValue, fromAmountValue, toAmountValue ->
-                if(fromCurrencyValue.isEmpty() || toCurrencyValue.isEmpty() ||
-                    fromCurrencyValue == toCurrencyValue || fromAmountValue == toAmountValue){
+                if (fromCurrencyValue == null ||
+                    toCurrencyValue == null ||
+                    fromCurrencyValue == toCurrencyValue ||
+                    fromAmountValue == toAmountValue
+                ) {
                     null
                 }else {
                     ConversionModel(
@@ -64,7 +75,7 @@ class SharedViewModel @Inject constructor(
 
     private fun updateDB(model: ConversionModel) {
         viewModelScope.launch(Dispatchers.IO) {
-            insertOrUpdateConversion.invoke(model)
+            insertOrUpdateConversionUseCase.invoke(model)
         }
     }
 
@@ -79,12 +90,24 @@ class SharedViewModel @Inject constructor(
         toAmount.value = fromAmountValue
     }
 
-    fun getLatestConversion() {
+    private fun getLatestConversion() {
         viewModelScope.launch(Dispatchers.IO) {
-            updateWithConversion(getLatestConversionUseCase.invoke())
-            observeAllFields()
+            val conv = getLatestConversionUseCase.invoke()
+            conv?.let {
+                updateWithConversion(it)
+                observeAllFields()
+            }
+
         }
     }
+
+    private fun getLatestRates() {
+        viewModelScope.launch(Dispatchers.IO) {
+            syncLatestRatesUseCase.invoke()
+        }
+    }
+
+
 
     private fun updateWithConversion(conversion: ConversionModel) {
         fromCurrency.value = conversion.from

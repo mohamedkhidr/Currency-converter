@@ -13,8 +13,11 @@ interface CurrenciesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertSymbol(symbols: List<Currency>)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertSymbol(symbols: Currency)
+
     @Query("SELECT * FROM currencies")
-    fun getAllSymbols(): Flow<List<Currency>>
+    fun getAllSymbols(): List<Currency>
 
     @Query("SELECT * FROM currencies WHERE symbol = :symbol")
     fun getCurrencyBySymbol(symbol: String): Currency

@@ -20,10 +20,14 @@ class HistoryViewModel @Inject constructor(private val getConversionsUseCase: Ge
     private val _conversions: MutableStateFlow<List<ConversionListItem>> =
         MutableStateFlow(emptyList())
     val conversions = _conversions.asStateFlow()
-    fun getAllConversions() {
+    private fun getAllConversions() {
         viewModelScope.launch(Dispatchers.IO) {
             _conversions.value = groupItemsByDate(getConversionsUseCase.invoke())
         }
+    }
+
+    init {
+        getAllConversions()
     }
 
     private fun groupItemsByDate(conversions: List<ConversionModel>): List<ConversionListItem> {

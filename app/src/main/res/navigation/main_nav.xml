@@ -24,6 +24,14 @@
             app:popEnterAnim="@anim/from_right"
             app:popExitAnim="@anim/to_left"/>
 
+        <action
+            android:id="@+id/action_home_to_currencies"
+            app:destination="@id/CurrenciesFragment" >
+            <argument
+                android:name="type"
+                app:argType="string" />
+        </action>
+
     </fragment>
     <fragment
         android:id="@+id/HistoryFragment"
@@ -36,6 +44,16 @@
         android:name="com.khidrew.currency.ui.screens.SettingsFragment"
         android:label="@string/settings"
         />
+
+    <dialog
+        android:id="@+id/CurrenciesFragment"
+        android:name="com.khidrew.currency.ui.screens.CurrenciesFragment"
+        android:label="@string/currencies"
+        >
+        <argument
+            android:name="type"
+            app:argType="string" />
+    </dialog>
 
 
 </navigation>

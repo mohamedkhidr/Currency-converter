@@ -10,13 +10,11 @@ import android.view.ViewGroup
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import com.khidrew.currency.R
 import com.khidrew.currency.databinding.FragmentHomeBinding
 import com.khidrew.currency.viewModels.SharedViewModel
-import dagger.hilt.android.AndroidEntryPoint
 
 
 class HomeFragment : Fragment() {
@@ -60,5 +58,12 @@ class HomeFragment : Fragment() {
             }
 
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
+        binding.fromClickListener =
+            View.OnClickListener {
+
+                findNavController().navigate(HomeFragmentDirections.actionHomeToCurrencies("from")) }
+
+        binding.toClickListener =
+            View.OnClickListener { findNavController().navigate(HomeFragmentDirections.actionHomeToCurrencies("to")) } }
     }
-}

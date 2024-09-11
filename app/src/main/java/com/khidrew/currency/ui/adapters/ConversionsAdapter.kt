@@ -68,8 +68,8 @@ class ConversionsAdapter(private val items: List<ConversionListItem>) :
     class ConversionItemViewHolder(private val binding: ItemConversionBinding) : BaseViewHolder(binding.root) {
         override fun onBind(item: Any) {
             if(item is ConversionListItem.ConversionItem){
-                binding.tvFromSymbol.text = item.conversion.from
-                binding.tvToSymbol.text = item.conversion.to
+                binding.tvFromSymbol.text = item.conversion.from.symbol
+                binding.tvToSymbol.text = item.conversion.to.symbol
                 binding.tvFromAmount.text = "${item.conversion.fromAmount}"
                 binding.tvToAmount.text = "${item.conversion.toAmount}"
             }
