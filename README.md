@@ -41,7 +41,7 @@ Clone the repository and build the project:
 
 ```bash
 git clone (https://github.com/mohamedkhidr/Currency-converter)
-cd yourrepository
+cd Currency-converter
 ./gradlew build
 
 
